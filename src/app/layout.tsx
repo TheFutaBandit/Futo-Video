@@ -4,7 +4,6 @@ import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme";
 
-
 export const metadata: Metadata = {
   title: "Futo",
   description: "Stream and save AI powered vids bruh",
@@ -19,17 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${manrope.className} bg-[#171717] antialiased`}
-        >
-           <ThemeProvider
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body className={`${manrope.className} bg-[#171717] antialiased`}>
+          <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
             disableTransitionOnChange
           >
-            {children}
+              {children}
           </ThemeProvider>
         </body>
       </html>
