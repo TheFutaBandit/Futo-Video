@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme";
+import { TanQueryProvider } from '@/tanstackQuery/index'
 
 export const metadata: Metadata = {
   title: "Futo",
@@ -26,7 +27,9 @@ export default function RootLayout({
             defaultTheme="dark"
             disableTransitionOnChange
           >
-              {children}
+              <TanQueryProvider >
+                {children}
+              </TanQueryProvider >
           </ThemeProvider>
         </body>
       </html>
