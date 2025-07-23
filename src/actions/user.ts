@@ -78,3 +78,42 @@ export const onAuthenticateUser = async () => {
         return {status: 500, message: "error in creating user"};
     }
 }
+
+export const getUserData = async (query: string) => {
+    try {
+        const user = await currentUser();
+
+        if(!user) {
+            return {status: 404, data: null};
+        }
+
+        const userList = await client.user.findMany({
+            where : {
+                OR : [
+                    {firstname : {contains: query}},
+                    {email : {contains: query }}, 
+                    {lastname : {contains: query }}
+                ],
+                NOT: {
+                    clerkid: user.id
+                }
+            },
+            select : {
+                id: true,   
+                firstname: true,
+                lastname: true,
+                email: true,
+                image: true,
+                Subscription : {
+                    select: {
+                        plan: true
+                    }
+                }
+            }
+        })
+
+        return {status: 200, data: userList}
+    } catch(err) {
+        return {status: 500, data: null}
+    }
+}

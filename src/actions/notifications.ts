@@ -8,10 +8,10 @@ export const getUserNotifications = async () => {
         const user = await currentUser();
 
     if(!user) {
-        return {status: 400, message: "user doesn't exist"};
+        return {status: 400, data: undefined};
     }
 
-    const notifications = client.user.findUnique({
+    const notifications = await client.user.findUnique({
         where : {
             clerkid: user.id
         }, 
@@ -28,14 +28,14 @@ export const getUserNotifications = async () => {
     if(notifications && notifications.Notification.length > 0) {
         return { status: 200, data: notifications}
     } else {
-        return {status: 400, data: []}
+        return {status: 400, data: {_count: {Notification: 0}}}
     }
     
 
     } catch(error) {
         return {
             status: 403, 
-            data: 'not found'
+            data: undefined
         }
     }
 }

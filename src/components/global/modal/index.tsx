@@ -25,17 +25,17 @@ const modal = ({children, trigger, heading, description}: Props) => {
         <DialogTrigger className ="" asChild>
             { trigger }
         </DialogTrigger>
-        <DialogHeader>
-            <DialogContent>
-                <DialogHeader>
+        <DialogContent>
+            <DialogHeader>
+                <DialogTitle>
                     {heading}
-                </DialogHeader>
+                </DialogTitle>
                 <DialogDescription>
                     {description}
-                </DialogDescription>
-            </DialogContent>
-        </DialogHeader>
-        {children}
+            </DialogDescription>
+            </DialogHeader>
+                {children}
+        </DialogContent>
     </Dialog>
   )
 }

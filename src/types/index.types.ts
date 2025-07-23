@@ -21,5 +21,16 @@ export type UserWorkspacesType = {
     }[];
 };
 
+export type UserNotificationsType = {
+    Notification: {
+        id: string;
+        userId: string | null;
+        content: string;
+    }[];
+    _count: {
+        Notification: number;
+    };
+}
+
 // Example usage:
 // const userWorkspaces: UserWorkspacesType = await client.user.findUnique({...});

@@ -3,7 +3,7 @@ import Spinner from './spinner'
 import { cn } from '@/lib/utils'
 
 type Props = {
-    status: boolean,
+    status?: boolean,
     color?: string,
     className?: string,
     children?: React.ReactNode
