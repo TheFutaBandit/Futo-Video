@@ -13,7 +13,7 @@ export const verifyAccessToWorkspace = async (workspaceId : string) => {
         return {status: 400, message: "user doesn't exist"};
     }
 
-    const isUserInWorkspace = client.workspace.findUnique({
+    const isUserInWorkspace = await client.workspace.findUnique({
         where : {
             id: workspaceId,
             OR : [

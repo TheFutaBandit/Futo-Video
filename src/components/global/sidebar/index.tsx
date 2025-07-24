@@ -26,6 +26,7 @@ import GlobalCard from '../global-card';
 import { Button } from '@/components/ui/button';
 import Loader from '../loader';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import InfoBar from '../info-bar';
 
 type Props = {
     activeWorkspaceId: string
@@ -181,6 +182,7 @@ const Sidebar = ({activeWorkspaceId}: Props) => {
 
   return (
   <div className = "full">
+    <InfoBar />
     <div className = "md:hidden fixed my-4">
       <Sheet>
         <SheetTrigger

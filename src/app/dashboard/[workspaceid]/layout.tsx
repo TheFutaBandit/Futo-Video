@@ -10,6 +10,9 @@ import {
 import { getWorkspaceFolders, getWorkspaceVideos, getUserWorkspaces,  } from '@/actions/workspace';
 import { getUserNotifications } from '@/actions/notifications';
 import Sidebar from '@/components/global/sidebar';
+import InfoBar from '@/components/global/info-bar';
+import GlobalCard from '@/components/global/global-card';
+import GlobalHeader from '@/components/global/global-header';
 
 type Props = {
     params: {workspaceid: string}
@@ -59,6 +62,9 @@ const layout = async ({params: {workspaceid}, children}: Props) => {
     <HydrationBoundary state = {dehydrate(queryClient)}>
         <div className = "flex h-screen w-screen">
             <Sidebar activeWorkspaceId={workspaceid} />
+            <div className = "w-full pt-28 p-6 overflow-y-scroll overflow-x-hidden">
+                <GlobalHeader workspace = {hasAccess.data!.workspace} />
+            </div>
         </div>
     </HydrationBoundary>
   )
