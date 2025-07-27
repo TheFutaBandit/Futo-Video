@@ -64,6 +64,7 @@ const layout = async ({params: {workspaceid}, children}: Props) => {
             <Sidebar activeWorkspaceId={workspaceid} />
             <div className = "w-full pt-28 p-6 overflow-y-scroll overflow-x-hidden">
                 <GlobalHeader workspace = {hasAccess.data!.workspace} />
+                {children}
             </div>
         </div>
     </HydrationBoundary>

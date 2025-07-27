@@ -176,3 +176,66 @@ export const getUserWorkspaces = async () => {
         }
     }
 }
+
+export const CreateWorkspace = async (name: string) => {
+    try {
+        const user = await currentUser();
+
+        if(!user) return {
+            status: 401,
+            message: "user not found"
+        }
+
+        const authorized = await client.user.findUnique({
+            where : {
+                clerkid: user.id
+            },
+            select : {
+                Subscription : {
+                    select : {
+                        plan: true
+                    }
+                }
+            }
+        })
+
+        if(authorized?.Subscription?.plan === 'PRO') {
+            try {
+                const workspace_new = await client.user.update({
+                    where: {
+                        clerkid: user.id
+                    }, 
+                    data: {
+                        Workspace : {
+                            create : {
+                                name,
+                            }
+                        }
+                    }
+                })
+
+                if(workspace_new) {
+                    return ({
+                        status: 201,
+                        data: "workspace created"
+                    })
+                }
+            } catch(err) {
+                return ({
+                    status: 500,
+                    data: "Internal Server Error"
+                })
+            }
+        } else {
+            return ({
+                status: 401,
+                data: "Unauthorized access"
+            })
+        }
+    } catch (err) {
+        return ({
+            status: 500,
+            data: "Internal Server Error"
+        })
+    }
+}
