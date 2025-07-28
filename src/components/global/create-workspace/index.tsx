@@ -8,6 +8,7 @@ import React from 'react'
 import Modal from "../modal"
 import { Button } from '@/components/ui/button'
 import { FolderPlusIcon } from 'lucide-react'
+import WorkspaceForm from '@/components/forms/workspace-form'
 
 type Props = {}
 
