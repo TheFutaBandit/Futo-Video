@@ -11,7 +11,7 @@ type Props = {
 
 const Loader = ({status, color, children, className}: Props) => {
 
-    return (status === false ? <div className={cn(className)}><Spinner color = {color}/></div> : children)
+    return (status === true ? <div className={cn(className)}><Spinner color = {color}/></div> : children)
 }
 
 export default Loader

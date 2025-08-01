@@ -24,7 +24,7 @@ const CreateWorkspace = (props: Props) => {
         }
     }
 
-    if(plan.subscription?.plan === 'PRO') {
+    if(plan.subscription?.plan === 'FREE') {
         return (<></>)
     }
     //FIX THIS
