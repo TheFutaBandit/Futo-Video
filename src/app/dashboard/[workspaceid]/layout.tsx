@@ -19,7 +19,8 @@ type Props = {
     children: React.ReactNode;
 }
 
-const layout = async ({params: {workspaceid}, children}: Props) => {
+const layout = async ({params, children}: Props) => {
+    const {workspaceid} = await params;
     const auth = await onAuthenticateUser();
 
     if(!auth.user?.Workspace || auth.user?.Workspace.length === 0) {

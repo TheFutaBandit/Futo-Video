@@ -12,11 +12,14 @@ export const metadata: Metadata = {
 
 const manrope = Manrope({subsets: ['latin']})
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: {workspaceId: string}
 }>) {
+ 
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>

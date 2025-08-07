@@ -32,13 +32,16 @@ const Folders = ({workspaceId}: Props) => {
         () => getWorkspaceFolders(workspaceId)
     )
 
-    const {latestVariables} = useMutationDataState(['rename-folders']); //change this to rename-folders if necessary
+    const {latestVariables} = useMutationDataState(['create-folder']); //change this to rename-folders if necessary
 
+    
     const {status, data: folders} = data as FolderProps;
 
-    if(isFetched && folders) {
+    // console.log("THE STATUS OF FOLDERS ARE", status);
+
+    // if(isFetched && folders) {
         
-    }
+    // }
 
 
   return (

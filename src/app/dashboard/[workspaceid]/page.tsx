@@ -6,10 +6,12 @@ import { TabsContent } from '@radix-ui/react-tabs'
 import React from 'react'
 
 type Props = {
-  params: {workspaceId : string}
+  params: {workspaceid : string}
 }
 
-const page = ({params}: Props) => {
+const page = async ({params}: Props) => {
+
+  const {workspaceid} = await params;
     
   return (
     <div className = "hello">
@@ -34,12 +36,12 @@ const page = ({params}: Props) => {
           </TabsList>
           <div className = "flex gap-x-3">
             <CreateWorkspace />
-            <CreateFolders workspaceId = {params.workspaceId}/>
+            <CreateFolders workspaceId = {workspaceid}/>
           </div>
         </div>
         <section className = "py-9">
         <TabsContent value = "videos">
-             <Folders workspaceId = {params.workspaceId}/>
+             <Folders workspaceId = {workspaceid}/>
           </TabsContent>
         </section>
       </Tabs>

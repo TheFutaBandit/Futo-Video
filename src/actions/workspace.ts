@@ -262,13 +262,14 @@ export const renameFolder = async (folderId: string, name: string) => {
 }
 
 export const createFolder = async (workspaceId: string) => {
+    console.log(workspaceId);
     try {
         const isNewFolders = await client.workspace.update({
             where: {
                 id: workspaceId,
             }, 
             data : {
-                folders : {
+                Folder : {
                     create: {name: 'untitled'}
                 }, 
             }
