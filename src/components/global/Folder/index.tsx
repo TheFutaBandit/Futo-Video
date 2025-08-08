@@ -48,16 +48,12 @@ const Folder= ({name, id, optimistic, count}: Props) => {
     }
 
     const updateFolderName = (e: React.FocusEvent<HTMLInputElement>) => {
-      if(inputRef.current && folderRef.current) {
-        if(
-          !inputRef.current.contains(e.target as Node | null) && 
-          !folderRef.current.contains(e.target as Node | null)
-        ) {
-          if(inputRef.current.value) {
-            mutate({name: inputRef.current.value})
-          } else Renamed();
-        }
-      }
+      
+     if(inputRef.current) {
+      if(inputRef.current.value) {
+        mutate({name: inputRef.current.value})
+      } else Rename();
+     }
     }
 
 
