@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
 import Loader from '../loader'
 import {Folder as FolderIcon} from 'lucide-react'
-import { useMutationData } from '@/hooks/useMutationData'
+import { useMutationData, useMutationDataState } from '@/hooks/useMutationData'
 import { renameFolder } from '@/actions/workspace'
 import { Input } from '@/components/ui/input'
 
@@ -51,10 +51,13 @@ const Folder= ({name, id, optimistic, count}: Props) => {
       
      if(inputRef.current) {
       if(inputRef.current.value) {
-        mutate({name: inputRef.current.value})
+        mutate({name: inputRef.current.value, id})
       } else Rename();
      }
     }
+
+    const {latestVariables} = useMutationDataState(['rename-folders']);
+
 
 
   return (
@@ -83,7 +86,7 @@ const Folder= ({name, id, optimistic, count}: Props) => {
                 onDoubleClick = {handleNameDoubelClick} 
                 className = "text-neutral-300"
               >
-                {name}
+                {latestVariables && latestVariables.status === "pending" && latestVariables.variables.id ? latestVariables.variables.name : name}
               </p>
           )}
           <span className = "text-neutral-500">{count || 0} videos</span>
