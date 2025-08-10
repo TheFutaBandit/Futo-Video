@@ -32,5 +32,15 @@ export type UserNotificationsType = {
     };
 }
 
+export type FolderProps = {
+    status: number,
+    data: {
+        name: string,
+        _count : {
+            videos: number
+        }
+    }
+}
+
 // Example usage:
 // const userWorkspaces: UserWorkspacesType = await client.user.findUnique({...});

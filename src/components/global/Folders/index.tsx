@@ -12,7 +12,7 @@ type Props = {
     workspaceId: string
 }
 
-export type FolderProps = {
+export type FoldersProps = {
     status: number,
     data: ({
         _count: {
@@ -35,7 +35,7 @@ const Folders = ({workspaceId}: Props) => {
     const {latestVariables} = useMutationDataState(['create-folder']); //change this to rename-folders if necessary
 
     
-    const {status, data: folders} = data as FolderProps;
+    const {status, data: folders} = data as FoldersProps;
 
     // console.log("THE STATUS OF FOLDERS ARE", status);
 
