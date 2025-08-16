@@ -1,5 +1,7 @@
 import { Move } from 'lucide-react'
+import Modal from '../modal'
 import React from 'react'
+import ChangeVideoLocation from '@/components/forms/change-video-location.tsx'
 
 type Props = {
     videoId: string,
@@ -17,7 +19,6 @@ const CardMenu= ({
     
   return (
     <Modal 
-        className = "flex item-center cursor-pointer gap-x-2"
         title = "Move to new workspace/folder"
         description=  "This will move your video"
         trigger = {
@@ -28,7 +29,12 @@ const CardMenu= ({
             />
         }
     >
-        
+        <ChangeVideoLocation 
+            currentFolder = {currentFolder}
+            currentWorkspace = {currentWorkspace}
+            videoId={videoId}
+            currentFolderName = {currentFolderName}
+        />
     </Modal>
   )
 }
