@@ -16,6 +16,7 @@ const ChangeVideoLocation = ({
     currentFolderName,
     currentWorkspace
 } : PropType) => {
+    const {} = useMoveVideos()
     return (
         <form className = "flex flex-col gap-y-5">
             <div className = "border-[1px] rounded-xl p-5">
