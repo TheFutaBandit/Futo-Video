@@ -1,8 +1,13 @@
 'use client'
 import {combineReducers, configureStore} from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useSelector } from "react-redux"
+import FolderReducer from './slices/folders'
+import WorkspaceReducer from './slices/workspace'
 
-export const rootReducer = combineReducers({})
+export const rootReducer = combineReducers({
+    FolderReducer,
+    WorkspaceReducer
+})
 
 export const store = configureStore({
     reducer: rootReducer,
