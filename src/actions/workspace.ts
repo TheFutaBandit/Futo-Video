@@ -87,7 +87,7 @@ export const getWorkspaceVideos = async (workspaceId: string) => {
 
         const videos = await client.video.findMany({
             where : {
-                OR: [{workspaceId}, {folderId: workspaceId}],
+                workspaceId,
             },
             select : {
                 id: true,
@@ -319,3 +319,27 @@ export const getFolderInfo = async (folderId: string)  => {
         }
     }
 }
+
+export const moveVideoLocation = async (
+    videoId: string,
+    workspaceId: string,
+    folderId: string | null,
+) => {
+    try {
+        const location = await client.video.update({
+            where: {
+                id: videoId
+            },
+            data: {
+                folderId: folderId,
+                workspaceId
+            }
+        })
+
+        if(location) return {status: 200, data: 'folder changed successfully'}
+        return {status: 400, data: 'unsuccessful'}
+    } catch(error) {
+        return {status: 500, data: 'undefined'}
+    }
+}
+    

@@ -89,8 +89,8 @@ model Video {
   views Int @default(0)
   summary String?
   processing Boolean @default(true)
-  folderId String @db.Uuid
-  Folder Folder @relation(fields:[folderId], references: [id], onDelete: Cascade)
+  folderId String? @db.Uuid
+  Folder Folder? @relation(fields:[folderId], references: [id], onDelete: Cascade)
 }
 
 model Folder {
