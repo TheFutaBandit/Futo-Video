@@ -1,5 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { useMoveVideos } from "@/hooks/useMoveVideos";
 import React from "react";
 
 type PropType = {
@@ -16,7 +17,7 @@ const ChangeVideoLocation = ({
     currentFolderName,
     currentWorkspace
 } : PropType) => {
-    const {register, isPending, onFormSubmit, workspaces, isFetching, isFolders} = useMoveVideos(videoId, currentWorkspace!)
+    const {register, isPending, folders,  onFormSubmit, workspaces, isFetching, isFolders} = useMoveVideos(videoId, currentWorkspace!)
 
     const folder = folders.find((f) => f.id === currentFolder)
 

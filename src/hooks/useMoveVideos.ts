@@ -26,9 +26,7 @@ export const useMoveVideos = (videoId: string, currentWorkspace: string) => {
 
     const {mutate, isPending} = useMutationData(
         ["change-video-location"],
-        (data: {folder_id: string | null, workspace_id: string}) => {
-            moveVideoLocation(videoId, data.workspace_id, data.folder_id || null)
-        }
+        (data: {folder_id: string, workspace_id: string}) =>  moveVideoLocation(videoId, data.workspace_id, data.folder_id)
     )
 
     const {errors, onFormSubmit, watch, register} = useZodForm(moveVideoSchema, mutate, { folder_id: null, workspace_id: currentWorkspace})

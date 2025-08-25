@@ -331,7 +331,7 @@ export const moveVideoLocation = async (
                 id: videoId
             },
             data: {
-                folderId: folderId,
+                folderId: folderId || undefined,
                 workspaceId
             }
         })
